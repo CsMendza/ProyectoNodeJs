@@ -1,8 +1,13 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const app = express();
 const morgan = require('morgan');
 const db = require('./config/database');
 const empleados = require('./routes/empleados')
+
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 
 app.get("/", (req, res, next)=>{
