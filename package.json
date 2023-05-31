@@ -4,10 +4,9 @@
   "description": "A Proyect using express.js",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CsMendza/ProyectoNodeJs.git"
@@ -25,6 +24,7 @@
   },
   "homepage": "https://github.com/CsMendza/ProyectoNodeJs/readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
