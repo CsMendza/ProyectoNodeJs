@@ -1,32 +1,43 @@
 window.onload = init;
 
-function init() {
-    
-        
-    document.querySelector('.btn-secondary').addEventListener('click',function() {
-        window.location.href = "login.html"
-    });
-
-    document.querySelector('.btn-primary').addEventListener('click',signin);
+function init (){
+    if(localStorage.getItem("token")){
+        headers = {
+            headers: {
+                'Authorization': 'bearer '+ localStorage.getItem('token')
+            }
+        }
+        document.querySelector('.btn-primary').addEventListener('click', signin);
     }
+    else{
+        window.location.href = 'index.html'
+    }
+}
+
 
 function signin(){
     var name = document.getElementById('input-name').value;
+    var lname = document.getElementById('input-lname').value;
     var mail = document.getElementById('input-mail').value;
-    var pass = document.getElementById('input-password').value;
+    var phone = document.getElementById('input-phone').value;
+    var direccion = document.getElementById('input-direction').value;
 
     axios({
         method:'post',
-        url: 'http://localhost:3000/user/signin',
+        url: 'http://localhost:3000/empleados',
         data: {
-            user_name: name,
-            user_mail: mail,
-            user_password: pass
+            nombre: name,
+            apellidos: lname,
+            email: mail,
+            telefono: phone,
+            direccion: direccion
+        },
+        headers: {
+            'Authorization': 'bearer '+ localStorage.getItem('token')
         }
     }).then(function(res){
         console.log(res);
         alert("Empleado Registrado correctamente");
-        window.location.href = "login.html";
     }).catch(function(err){
         console.log(err);
     })

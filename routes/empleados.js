@@ -33,7 +33,7 @@ empleados.put("/:id([0-9]{1,3})",async(req,res,next)=>{
     
     if (nombre && apellidos && telefono && email && direccion) {
         let query = `UPDATE empleados SET nombre='${nombre}',apellidos=${apellidos},`;
-        query+= `telefono=${telefono},email=${email} WHERE id=${req.params.id};`;
+        query+= `telefono=${telefono},email=${email},direccion=${direccion} WHERE id=${req.params.id};`;
         const rows = await db.query(query);
         if (rows.affectedRows==1) {
             return res.status(201).json({code: 201, message:"empleado actualizado correctamente"});

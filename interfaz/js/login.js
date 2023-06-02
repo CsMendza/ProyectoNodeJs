@@ -1,13 +1,7 @@
 window.onload = init;
 
 function init() {
-    
-        
-    document.querySelector('.btn-secondary').addEventListener('click',function() {
-        window.location.href = "signin.html"
-    });
-
-    document.querySelector('.btn-primary').addEventListener('click',login);
+        document.querySelector('.btn-primary').addEventListener('click',login);
     }
     
 
@@ -29,7 +23,7 @@ function login(){
         console.log(res.data);
         if (res.data.code===200) {
             localStorage.setItem("token", res.data.message);
-            window.location.href="empleados.html"; 
+            window.location.href="menuUsuario.html"; 
         }
         else{
             alert("Usuario y/o contraseña incorrectos");
